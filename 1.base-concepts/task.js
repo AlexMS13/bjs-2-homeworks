@@ -4,12 +4,10 @@ function solveEquation(a, b, c) {
 
   const D = Math.pow(b, 2) - 4 * a * c;
 
-  if (D < 0) {
-		return arr;
-	} else if (D == 0) {
+	 if (D == 0) {
 		let sqrt = -b / (2 * a);
 		arr.push(sqrt);
-	} else {
+	} else if (D > 0) {
 		let sqrt1 = (-b + Math.sqrt(D)) / (2 * a);
 		let sqrt2 = (-b - Math.sqrt(D)) / (2 * a);
 		arr.push(sqrt1);
@@ -20,18 +18,13 @@ function solveEquation(a, b, c) {
   
 }
 
-"use strict";
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  let P = (percent / 100) / 12;
+  let Rate = (percent / 100) / 12;
 
-	let S = amount - contribution;
+	let Payment = amount - contribution;
 
-	if (S <= 0) {
-		throw new Error("Сумма кредита должна быть больше нуля.");
-	}
-
-	let monthlyPay = S * (P + (P / (Math.pow((1 + P), countMonths) - 1)));
+	let monthlyPay = Payment * (Rate + (Rate / (Math.pow((1 + Rate), countMonths) - 1)));
 
 	let totalAmount = monthlyPay * countMonths;
   	totalAmount = Math.round(totalAmount * 100) / 100;
